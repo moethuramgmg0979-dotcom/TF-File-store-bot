@@ -89,35 +89,27 @@ async def start_command(client: Client, message: Message):
                 pass
 
 
-        k = await client.send_message(chat_id = message.from_user.id, text=f"<b>❗️ <u>IMPORTANT</u> ❗️</b>\n\nThis Anime File Will Be Deleted In {file_auto_delete} ⚠️.\n\n🫡 Please Forward This Anime File To Safe place And Start Downloading There.")
-
-        # Schedule the file deletion
-        asyncio.create_task(delete_files(TFT_MSG, client, k))
         
         
 
         return
     else:
         reply_markup = InlineKeyboardMarkup([[
-            InlineKeyboardButton("⚔️Update Channel", url="https://t.me/tech_freak_tamil"),
-            InlineKeyboardButton("🛡️Support Group", url="https://t.me/+NITVxLchQhYzNGZl")
-            ],[
-            InlineKeyboardButton("📢Help", callback_data="help"),
-            InlineKeyboardButton("⚡About", callback_data="about")
-            ],[
-            InlineKeyboardButton("❌Close", callback_data="close")
-        ]])
-        await message.reply_photo(
-            photo= START_PIC,
-            caption= START_MSG.format(
-                first = message.from_user.first_name,
-                last = message.from_user.last_name,
-                username = None if not message.from_user.username else '@' + message.from_user.username,
-                mention = message.from_user.mention,
-                id = message.from_user.id
-            ),
-            reply_markup = reply_markup,
-            
+            InlineKeyboardButton("Channel 1", url="https://t.me/+B2ab64eu89YyMTc1"),
+            InlineKeyboardButton("Channel 2", url="https://t.me/+NscZ25ByANMzNjc1")
+            ]
+        ])
+
+        await message.reply_text(
+         text= START_MSG.format(
+          first = message.from_user.first_name,
+          last = message.from_user.last_name,
+          username = None if not message.from_user.username else '@' + message.from_user.username,
+          mention = message.from_user.mention,
+          id = message.from_user.id
+         ),
+         reply_markup = reply_markup,
+         disable_web_page_preview=True # Optional: prevents link previews
         )
         return
 
@@ -134,10 +126,10 @@ async def not_joined(client: Client, message: Message):
 
     # Check if the first and second channels are both set
     if FORCE_SUB_CHANNEL_1 is not None and message.from_user.id not in ADMINS and not await is_subscribed1(filter, client, message):
-        buttons.append([InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink1)])
+        buttons.append([InlineKeyboardButton(text="• Channel 1 •", url=client.invitelink1)])
             
     if FORCE_SUB_CHANNEL_2 is not None and message.from_user.id not in ADMINS and not await is_subscribed2(filter, client, message):
-        buttons.append([InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink2)])
+        buttons.append([InlineKeyboardButton(text="• Channel 2 •", url=client.invitelink2)])
         
     if FORCE_SUB_CHANNEL_3 is not None and message.from_user.id not in ADMINS and not await is_subscribed3(filter, client, message):
         buttons.append([InlineKeyboardButton(text="• ᴊᴏɪɴ ᴄʜᴀɴɴᴇʟ •", url=client.invitelink3)])
@@ -158,7 +150,6 @@ async def not_joined(client: Client, message: Message):
         pass  # Ignore if no second argument is present 
 
     await message.reply_photo(
-    photo=F_PIC, 
     caption=FORCE_MSG.format(
         first=message.from_user.first_name,
         last=message.from_user.last_name,
