@@ -67,9 +67,9 @@ BOT_STATS_TEXT = "<b>BOT UPTIME :</b>\n{uptime}"
 
 USER_REPLY_TEXT = "ဒါဟာ Botတစ်ခုဖြစ်လို့ Replyတွေမပြန်ပေးနိုင်ပါဘူးဗျ"
 
-START_MSG = os.environ.get("START_MESSAGE", "<b>Hi {first}\n\nဇာတ်ကားလေးတွေကိုကြည့်ဖို့ အောက်က Channelလေးတွေကို အရင်Joinပေးပါဗျ💞 </b>")
+START_MSG = os.environ.get("START_MESSAGE", "<b>Hi {mention}\n\nဇာတ်ကားလေးတွေကိုကြည့်ဖို့ အောက်က Channelလေးတွေကို အရင်Joinပေးပါဗျ💞 </b>")
 
-FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "Hi {first}\n\nဇာတ်ကားလေးတွေကိုကြည့်ဖို့ အောက်က Channelလေးတွေကို အရင်Joinပေးပါဗျ💞")
+FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "Hi {mention}\n\nဇာတ်ကားလေးတွေကိုကြည့်ဖို့ အောက်က Channelလေးတွေကို အရင်Joinပေးပါဗျ💞\nပြီးရင် Try againကိုနှိပ်ပေးပါ")
 
 
 
